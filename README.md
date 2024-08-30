@@ -2,7 +2,7 @@
 
 ## Usage
 
-This repository will act as a single point of entry for all things to do with the Journal Society. Session notes writtin in LaTeX will be stored as .tex files and .pdf in the `notes/` folder and all documents sent in and used for reference will be in `reference/`
+This repository will act as a single point of entry for all things to do with the Journal Society. Session notes written in LaTeX will be stored as .tex files and .pdf in the `notes/` folder and all documents sent in and used for reference will be in `reference/`
 
 ## For Members
 
