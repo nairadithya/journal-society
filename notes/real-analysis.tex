@@ -1,0 +1,890 @@
+% Created 2024-08-24 Sat 17:21
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{preamble}
+\author{Adithya Nair}
+\date{\today}
+\title{\Huge{Journal Society\\ Notes}}
+\hypersetup{
+	pdfauthor={Adithya Nair},
+	pdftitle={Journal Society Notes},
+	pdfsubject={},
+	pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\part{Real Analysis}
+
+\chapter{Natural Numbers}
+Numbers were built to count. A system for counting was made, and that system is the number system.
+\begin{definition}
+	A natural number is an element of the set $\mathbb{N}$ of the set
+	\[
+		\mathbb{N} = \{0,1,2,3\cdots \}
+	\]
+	is obtained from 0 and counting forward indefinitely.
+\end{definition}
+\section{Peano Axioms}
+
+We start with axioms to help clarify this.
+\begin{itemize}
+	\item Axiom 1 : \(0 \in \mathbb{N}\)
+	\item Axiom 2: If \(n \in \mathbb{N}\),, then \(n++ \in \mathbb{N}\)
+	\item Axiom 3: 0 is not an increment of any other natural number \(n \in \mathbb{N}\)
+	\item Axiom 4: If \(n \neq m\), \(n++ \neq m++\)
+	\item Axiom 5: (Principle Of Mathematical Induction) Let \(P(n)\) be any property pertaining to a natural number \(n\). Suppose that \(P(0)\) is true, and suppose that whenever \(P(n)\) is true, \(P(n++)\) is also true. Then \(P(n)\) is true for every natural number.
+\end{itemize}
+
+We then make an assumption: That the set \(\mathbb{N}\) which satisfies these five axioms is called the set of natural numbers.
+With these 5 axioms, we can construct sequences
+\section{Recursive Definitions}
+
+\begin{prop}[Recursive Definitions]
+	Suppose for each natural number $n$, we have some function $f_n:\mathbb{N} \rightarrow \mathbb{N}$ from the natural numbers to the natural numbers. Then we can assign a unique natural number $a_n$ to each natural number $n$, such that $a_0 = c$ and $a_{n++} = f_n(a_n)$ for each natural number $n$.
+\end{prop}
+\section{Addition}
+
+\begin{definition}[Addition Of Natural Numbers]
+	Let n be a natural number. $(n \in N)$. To add zero to m, we define $0+m:=m$ Now suppose inductively that we have defined how to add $n$ to $m$. Then we can add $n++$ to $m$ by defining($n++$) + m := (n+m)++
+\end{definition}
+
+\begin{lemma}
+	For any natural number $n + 0=n$
+\end{lemma}
+\begin{proof}
+	We use induction,
+
+	The base case, n = 0,
+	\begin{align*}
+		n         & = 0, 0 + 0 = 0    \\
+		n+0       & = n               \\
+		(n++) + 0 & = (n+0)++ = (n++)
+	\end{align*}
+
+	Suppose inductively, that $n+0=n$,
+
+	For $n=n++$,
+	\begin{align*}
+		(n++) + 0 & = (n+0)++       \\
+		\text{We know that $n+0=n$} \\
+		(n++) + 0 & = (n++)
+	\end{align*}
+\end{proof}
+
+\begin{lemma}
+	For any natural numbers $n$ and $m$,
+	$$n + (m++) = (n+m)++$$
+	\label{sec:addition,lemmaadd}
+\end{lemma}
+\begin{proof}
+	Inducting on $n$ while keeping $m$ fixed,
+	\begin{align*}
+		n         & = 0,      \\
+		0 + (m++) & = (0+m)++ \\
+		0 + (m++) & = (m++)
+	\end{align*}
+	This we know is true from the definition of addition $(0+m:=m)$
+
+	Suppose inductively, that $n+(m++) = (n+m)++$ is true.
+	For $n=(n++)$,
+	\begin{align*}
+		(n++) + (m++) & = ((n++)+m)++ & \text{From the definition of addition} \\
+		              & =(n+(m++))++                                           \\
+		              & =((n+m)++))++
+	\end{align*}
+\end{proof}
+
+Putting m = 0, we get \(n+1 = n++\)
+
+\begin{prop}[Addition is commutative]
+	For any natural numbers $n$ and $m$, $n+m=m+n$
+\end{prop}
+\begin{proof}
+	We induct over $n$,
+	For the base case, $n=0$,
+
+	We must show that $m+0 = 0+m$
+	From the definition of addition, we have
+	$$0+m = m$$
+
+	As shown earlier, we have
+
+	$$m+0 = m$$
+
+	This is clearly true for $n=0$.
+
+	Now suppose inductively that $m+n = n+m$
+
+	For $n=n++$, we must show that $m+(n++) = (n++) + m$
+
+	We know from the definition of addition that,
+
+	$$(n++) + m := (m+n)++$$
+
+	And we proved earlier that,
+
+	$$m+(n++) = (m+n)++$$
+
+	Therefore,
+
+	$$m+(n++) = (n++)+m$$
+\end{proof}
+\begin{prop}[Addition is associative]
+	For any natural numbers, $a,b$ and $c$, we have $(a+b)+c = a+(b+c)$
+\end{prop}
+\begin{proof}
+	We take $(a+b)+n = a + (b+n)$
+
+	Inducting over n,
+
+	For $n=0$,
+
+	We have in the LHS,
+	\begin{align*}
+		 & =(a+b)+0 & \text{Since $n+0 = n$} \\
+		 & =a+b
+	\end{align*}
+
+	On the RHS,
+	\begin{align*}
+		 & =a + (b+0) & \text{Since $n+0 = n$} \\
+		 & =a + b
+	\end{align*}
+
+	Suppose inductively that $(a+b)+n = a+(b+n)$,
+
+	For $n=n++$,
+	We have to show that $(a+b)+(n++) = a+(b+(n++))$
+
+	On the LHS we have,
+
+	\begin{align*}
+		 & =(a+b)+(n++)                                               \\
+		 & =(a+b+n)++   & \text{(From the lemma $m+(n++) = (m+n)++$)} \\
+	\end{align*}
+
+	On the RHS we have,
+
+	\begin{align*}
+		 & =a+(b+(n++))                                               \\
+		 & =a+(b+n)++   & \text{(From the lemma $m+(n++) = (m+n)++$)} \\
+		 & =(a+b+n)++
+	\end{align*}
+
+	LHS = RHS
+\end{proof}
+
+\begin{prop}[Cancellation Law]
+	Let $a,b,c$ be natural numbers such that $a+b=a+c$. Then we have $b=c$.
+\end{prop}
+\begin{proof}
+	We have,
+	$$n+b=n+c$$
+
+	Inducting over n,
+	For the base case, $n=0$
+	\begin{align*}
+		0 + b & = 0 + c \\
+		b     & = c
+	\end{align*}
+
+	Suppose inductively that $n+b=n+c$
+	For $n=n++$,
+	$$(n++)+b=(n++)+c$$
+	On the LHS
+	\begin{align*}
+		 & =(n++) + b \\
+		 & =(n+b)++
+	\end{align*}
+
+	On the RHS
+	\begin{align*}
+		 & =(n++) + c \\
+		 & =(n+c)++
+	\end{align*}
+
+	We know from the inductive hypothesis that,
+	$$\text{If} n+b = n+c, \text{then} b = c$$
+
+	Thus we have,
+	$$b++ = c++$$
+\end{proof}
+
+\begin{definition}[Positive natural number]
+	All numbers where,
+	\[
+		n \neq 0, n \in \mathbb{N}
+	\]
+\end{definition}
+\begin{prop}
+	If $a$ is a positive natural number and $b$ is a natural number, then $a+b$ is positive.
+\end{prop}
+\begin{proof}
+	Inducting over b,
+
+	For $b$ = 0,
+	\begin{align*}
+		a+0 = a
+	\end{align*}
+	This proves the base case, since we know a is positive.
+
+	Now, suppose inductively, that $(a+b)$ is positive.
+
+	For $(a+(n++))$,
+	\begin{align*}
+		a+(n++) = (a+n)++
+	\end{align*}
+	We know from Axiom 3 that $n++ \neq 0$. Thus we close the inductive loop.
+\end{proof}
+\begin{lemma}
+	For every $a$, there exists a unique $b$ such that $b++ = a$
+\end{lemma}
+\begin{proof}
+	Proof by contradiction,
+	Suppose that there are two different increments, $m++$, $n++$ that equal to $a$,
+
+	We have,
+	\begin{align*}
+		m++ & = a \\
+		n++ & = a
+	\end{align*}
+
+	Then we can say,
+	\begin{align*}
+		m++   & = n++ &                              \\
+		m + 1 & = n+1 &                              \\
+		m     & = n   & \text{(By Cancellation Law)}
+	\end{align*}
+
+	But we said that m and n are different numbers which increment to $a$.
+
+	Therefore, we can conclude that there is only one number $b$ which increments to $a$
+\end{proof}
+\section{Order}
+
+\begin{definition}[Order]
+	Let n and m be natural numbers we say that $n$ is greater than or equal to m, and write $n \geq m$ iff we have $n = m + a$ for some natural number $a$. We say that $n > m$ when $n \geq m$ and $n \neq m$
+\end{definition}
+\begin{prop}[Basic properties of order for natural numbers]
+	Let $a,b,c$ be natural numbers then
+	\begin{enumerate}
+		\item (Order is reflexive) $a \geq a$
+		\item (Order is transitive) If $a \geq b$ and $b \geq c$, then $a \geq c$
+		\item (Order is antisymmetric) If $a \geq b$ and $b \geq a$ then $a=b$
+		\item (Addition preserves order) $a \geq b$ if and only if $a+c \geq b+c$
+		\item $a<b$ if and only if $a++ \leq b$
+		\item $a<b$ if and only if $b= a+d$ for some positive number d.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item Proving order is reflexive, $a \geq a$
+
+		      We know that,
+
+		      $a = a + 0$
+
+		      From the definition of order,
+		      We can write that $a \geq b$ when $a = b + d$ where $d \in \mathbb{N}$
+
+		      Thus $a \geq a$.
+
+		\item Proving order is transitive, $a \geq b$ and $b \geq c$ then $a \geq c$
+
+		      We write,
+
+		      \begin{align*}
+			      a & = b + d     \\
+			      b & = c + e     \\
+			      a & = c + e + d
+		      \end{align*}
+		      We can say that since $(e+d) \in \mathbb{N}$
+
+		      We define $f := (e+d)$
+		      Where $f \in \mathbb{N}$
+		      \begin{align*}
+			      a & = c + (f)
+		      \end{align*}
+
+		      Thus we can say,
+		      $$\text{If } a \geq b, b \geq c \text{ then } a \geq c$$
+
+		\item Proving order is antisymmetric, If $a \geq b$ and $b \geq a$ then $a=b$
+		      We can say,
+		      \begin{align*}
+			      a = b + d \\
+			      b = a + e \\
+		      \end{align*}
+		      Where $d,e \in \mathbb{N}$
+
+		      \begin{align*}
+			      a = (a + e) + d \\
+			      b = (b + d) + e \\
+		      \end{align*}
+
+		      Then we can write,
+		      \begin{align*}
+			      a = a + (e + d) \\
+			      b = b + (d + e) \\
+		      \end{align*}
+
+		      Then we can say that $(e+d)$ and $(d+e)$ are 0.
+
+		      We know that if $a + b = 0$ then $a,b = 0$
+
+		      Thus $d$ and $e$ are 0.
+		      \begin{align*}
+			      a = b + d \\
+			      a = b
+		      \end{align*}
+		\item Proving $a < b$ if and only if $b =a+d$ for some positive number d
+		      If $b = a+d$ where $d$ is a positive natural number, $d \neq 0$
+
+		      Which means that $b \neq a + 0$ or $b \neq a$
+
+		      This means that b is strictly greater than a
+
+		      If $a<b$ then $a \geq b$ and $a \neq b$
+
+		      So if $a \geq b$
+		      Then,
+		      \begin{align*}
+			      a = b + d \\
+		      \end{align*}
+		      But,
+		      \begin{align*}
+			      a \neq b     \\
+			      a \neq b + 0 \\
+			      d \neq 0
+		      \end{align*}
+		      Thus d cannot be 0. $d$ can only be a positive natural number.
+		\item Proving addition preserves order, $a \geq b$ if and only if $a + c \geq b + c$
+		      Proving $a \geq b$ if $a + c \geq b + C$
+
+		      Where $d \in \mathbb{N}$
+		      \begin{align*}
+			      a + c & = b + c + d &   & \text{By definition}       \\
+			      a + c & = (b+d) + c &                                \\
+			      a     & = (b+d)     &   & \text{By cancellation law} \\
+			      a     & \geq b
+		      \end{align*}
+		      Proving $a + c \geq b +c$ if $a \geq b$
+
+		      We know,
+		      \begin{align*}
+			      a = b + d \\
+		      \end{align*}
+		      Where $d \in \mathbb{N}$
+
+		      We write a+c using what we know from above,
+		      \begin{align*}
+			      a + c   & = b + d + c   \\
+			      a + c   & = b + c + d   \\
+			      (a + c) & = (b + c) + d \\
+			      a + c   & \geq b + c
+		      \end{align*}
+
+		\item Proving $a < b$ if and only if $a++ \leq b$
+		      Proving $a < b$ if $a++ \leq b$
+
+		      We can write,
+		      \begin{align*}
+			      a++       & = b + d & \text{Where $d \in \mathbb{N}$} \\
+			      a++ + d   & = b                                       \\
+			      a + (d++) & = b                                       \\
+		      \end{align*}
+		      Since from Axiom 3, we know that 0 is not an increment of any natural number, $(d++ \neq 0)$
+		      Therefore,
+		      \begin{align*}
+			      a & < b
+		      \end{align*}
+
+	\end{enumerate}
+\end{proof}
+\begin{prop}[Trichotomy of order for natural numbers]
+	Let $a$ and $b$ be natural numbers. Then exactly one of the following statements is true: $a<b, a=b or a>b$
+\end{prop}
+\begin{proof}
+	First we show that no more than one of the statements is true.
+	If $a<b$ then $a \neq b$ by definition. If $a>b$ then $a \neq b$ by definition. If $a>b$ and $a<b$ then $a=b$, which we proved earlier.
+
+	Now to show that exactly one of these statements are true.
+	We induct on a,
+
+	When a = 0,
+	We know that,
+	\begin{align*}
+		b & = 0 + b & (\forall b \in \mathbb{N}) \\
+		b & \geq 0  &
+	\end{align*}
+
+	Suppose inductively that exactly one of the above statements are true for a and b.
+	For a++,
+	We take each statement. First for $a>b$
+	\begin{align*}
+		a     & > b                                                                  \\
+		a     & = b + d                                                              \\
+		(a++) & = (b + d)++ & \text{Incrementing both sides}                         \\
+		(a++) & = b + d++   & \text{From Lemma \ref{sec:addition,lemmaadd}}          \\
+		(a++) & > b         & \text{If $d \in \mathbb{N}$ then $d++ \in \mathbb{N}$}
+	\end{align*}
+	For $a=b$
+	\begin{align*}
+		a     & = b     \\
+		(a++) & = (b)++ \\
+		(a++) & = b + 1 \\
+		a     & > b     \\
+	\end{align*}
+	For $a<b$
+	\begin{align*}
+		a & <b            \\
+		a + d = b         \\
+		(a + d)++ = b++   \\
+		(a++) + d = b++   \\
+		(a++) + d = b + 1 \\
+	\end{align*}
+	We have two cases,
+	If $d = 1$,
+	Then by cancellation law
+	$$ a++ = b $$
+	If $d \neq 1$
+	Then
+	$$a++ < b$$
+	But never both, which concludes the inductive loop.
+\end{proof}
+\section{Multiplication}
+\begin{definition}[Multiplication]
+	Let $m$ be a natural number. To multiply zero to $m$, we define $0 \times m := 0$. Now suppose inductively that we have defined how to multiply $n$ to $m$. Then we can multiply $n++$ to $m$ by defining $(n++) \times m := (n \times m) + m$
+\end{definition}
+We can say \(0 \times m = 0\), \(1 \times m = 0 + m\), \(2 \times m= 0 + m + m\) and so on.
+\begin{lemma}
+	Prove that multiplication is commutative
+\end{lemma}
+\begin{proof}
+	We use the way we proved that addition is commutative as a blueprint.
+	There are two things we need to prove first.
+	\begin{enumerate}
+		\item For any natural number, $n$, $n \times 0 = 0$
+		\item For any natural numbers, $n$ and $m$, $n \times (m++) = (n \times m) + m$
+	\end{enumerate}
+
+	First we prove,
+	\begin{enumerate}
+		\item For any natural number, $n$, $n \times 0 = n$
+		      We induct over $n$,
+		      For $n = 0$,
+		      $$0 \times 0 = 0$$
+
+		      Which is true from the definition
+
+		      Now suppose inductively, that $n \times 0 = 0$,
+		      For $(n++) \times 0$,
+		      From the definition we can write this as,
+		      \begin{align*}
+			      (n++) \times 0 & = (n \times 0) + 0 \\
+			      \text{We know that $n \times 0 = 0$}
+			      (n++) \times 0 & = 0 + 0            \\
+			      (n++) \times 0 & = 0
+		      \end{align*}
+		      Therefore, $$n \times 0 = n$$
+		\item 	For any natural numbers, $n$ and $m$, $n \times (m++) = (n \times m) + m$
+		      We induct over $n$, (keeping $m$ fixed)
+
+		      For $n = 0$,
+		      We know from the definition for multiplication with zero that,
+		      \begin{align*}
+			      0 \times (m++) = 0                                    \\
+			      \text{We also know that}                              \\
+			      (m++) \times 0                  & = (m \times 0 ) + 0 \\
+			      (m++) \times 0                  & = 0                 \\
+			      (m++) \times 0 = 0 \times (m++) & = (0 \times m) + m
+		      \end{align*}
+
+		      Suppose inductively that $n \times (m++) = (n \times m) + m$
+		      For $n = (n++)$
+		      To prove $(n++) \times (m++) = ((n++) \times m) + m$,
+
+		      \begin{align*}
+			      (n++) \times (m++) & = (n \times (m++)) + m++            \\
+			      \text{We can rewrite RHS using the inductive hypothesis} \\
+			      (n++) \times (m++) & = ((n \times m) + m) + m++
+		      \end{align*}
+		      Taking the LHS, we write
+
+		      \begin{align*}
+			      (n++) \times (m++) & = (n \times (m++)) + m++  & \text{From the definition}           \\
+			                         & = (n \times m)+ m) + m++  & \text{From the inductive hypothesis} \\
+			                         & = (n \times m)+ m + (m++) & \text{Associativity of addition}     \\
+			                         & = (n \times m)+ (m++) + m & \text{Commutativity of addition}
+		      \end{align*}
+
+		      We can say that LHS = RHS, closing the inductive loop
+	\end{enumerate}
+	Now we can finally get on with proving that multiplication is commutative, armed with the lemmas we've proved here we can prove this similarly to how we proved addition is commutative
+	We are proving, $m \times n = n \times m$
+	We fix $m$ and induct over $n$
+
+	For $n=0$,
+	\begin{align*}
+		0 \times m & = 0          & \text{From the definition} \\
+		m \times 0 & = 0          & \text{Proved earlier}      \\
+		m \times 0 & = 0 \times m
+	\end{align*}
+
+	Suppose inductively that $m \times n = n \times m$ is true.
+
+	For proving $m \times (n++) = (n++) \times m$,
+	Take the LHS,
+	\begin{align*}
+		m \times (n++) & = (n \times m) + m & \text{Proved earlier} \\
+	\end{align*}
+	Take the RHS,
+	\begin{align*}
+		(n++) \times m & = (n \times m) + m & \text{From the definition} \\
+	\end{align*}
+	We can see that LHS = RHS, closing the inductive loop
+
+	Thus multiplication is commutative
+\end{proof}
+\begin{lemma}[Positive natural numbers have no zero divisors]
+	Let $n,m$ be natural numbers, then $n \times m = 0$ if and only if at least one of $n,m$ is equal to zero. In particular, if both $n,m$ are both positive, then $nm$ is positive
+\end{lemma}
+\begin{proof}
+	First we prove if both $n,m$ are both positive, then $nm$ is positive
+	We have, $n$ and $m$ such that $n,m > 0$
+
+	Let $a,b \in N$ such that $a++ = m, b++ = n$
+
+	\begin{align*}
+		n \times m & = (a++)(b++)     &                               \\
+		           & = (a++)b + (a++) & m \times n++ = m \times n + m \\
+		           & = ab + b + (a++) & m++ \times n = m \times n + n \\
+		           & = ab + b + (m)   & m++ \times n = m \times n + n \\
+	\end{align*}
+	Since we know that $m>0$, then $m+d$ where $d \in \mathbb{N}$ is also greater than 0. Thus it's proved.
+
+	Now onto proving the first statement, Let $n,m$ be natural numbers, then $n \times m = 0$ if and only if at least one of $n,m$ is equal to zero.
+
+	We have to prove it both ways, if $n\times m = 0$ then at least one of $n,m$ is equal to zero.
+
+	Proving by contradiction
+	when $nm = 0$ let's assume $n,m \ne 0$ meaning $n,m$ are positive natural numbers.
+
+
+\end{proof}
+\begin{prop}[Distributive Law]
+	For any natural numbers, $a,b,c$ We have, $a(b+c) = ab + ac$ and $(b+c)a = ba + ca$
+\end{prop}
+\begin{proof}
+	We only need to show the first identity, then the other would be implied by commutativity
+	We keep $a$ and $b$ fixed, and induct over c.
+
+	For $c = 0 $,
+	We have on the LHS,
+	\begin{align*}
+		a(b+0) & = ab & (b+0 = b) \\
+	\end{align*}
+	We have on the RHS,
+	\begin{align*}
+		ab + ac & = ab + a0 &                               \\
+		        & = ab + 0  & \text{Since $m \times 0 = 0$} \\
+		        & = ab      &
+	\end{align*}
+	LHS=RHS
+	\\
+	This is true for the base case.
+	Now suppose inductively that $a(b+c) = ab + ac$
+
+	For $c=(n++)$,
+	We have on the LHS,
+	\begin{align*}
+		a(b+(n++)) & = a((b+n)++)      & \text{Proved earlier}             \\
+		           & = a(b+n) \times a & m \times (n++) = (m \times n) + m \\
+	\end{align*}
+
+	We have on the RHS,
+
+	\begin{align*}
+		ab + ac & = a(b+c) & \text{Inductive hypothesis}
+	\end{align*}
+
+	Thus, LHS = RHS
+
+	Closing the inductive loop.
+\end{proof}
+\begin{prop}[Multiplication is associative]
+	Prove,
+	\[
+		(a \times b) \times c = a \times (b\times c)
+	\]
+\end{prop}
+\begin{proof}
+	We fix $a,b$ and induct over c
+
+	For $c=0$,
+	On the LHS,
+
+	\begin{align*}
+		(ab)0 & = 0 & m \times 0 = 0 \\
+	\end{align*}
+
+	On the RHS,
+
+	\begin{align*}
+		a(b \times 0) & = a(0) & m \times 0 = 0 \\
+		              & = 0
+	\end{align*}
+
+	This covers the base case, suppose inductively that $(a \times b) \times c = a \times (b \times c)$
+
+	For $c = c++$,
+
+	We have on the LHS,
+	\begin{align*}
+		(a \times b) \times (c++) & = ((ab)c) + ab & m \times 0 = m \\
+		                          & = (ab)c + ab                    \\
+	\end{align*}
+	We have on the RHS,
+	\begin{align*}
+		a \times (b \times (c++)) & = a((bc) + b) & m \times n++  = m \times n + m \\
+		                          & = a(bc) + ab  & \text{Distributive Law}        \\
+	\end{align*}
+
+	From the inductive hypothesis, $(ab)c = a(bc)$, the LHS and the RHS statements
+	are equivalent
+
+	Thus we have LHS = RHS
+
+	Closing the inductive hypothesis
+\end{proof}
+\begin{prop}[Multiplication preserves order]
+	If $a,b$ are natural numbers such that $a>b$ and $c$ is positive, then $ac > bc$
+\end{prop}
+\begin{proof}
+	If $a > b$, we say that $a = b+d$ where $d$ is a positive natural number.
+
+	Multiplying by $c$ on both sides,
+	\begin{align*}
+		ac & = (b+d)c  &                         \\
+		ac & = bc + cd & \text{Distributive Law} \\
+	\end{align*}
+	We know that $cd$ is a positive natural number, so this is expressed in the form $m = n + d$ which is the same as writing $m > c$
+
+	Thus we can write,
+	\[
+		ac > bc
+	\]
+\end{proof}
+\begin{corollary}[Cancellation Law]
+	Let $a,b,c$ be natural numbers such that $ac = bc$ and $c$ is non-zero. Then $a = b$
+\end{corollary}
+\begin{proof}
+	Let's examine the three cases possible for $a,b$
+
+	When $a<b$, then $ac < bc$ from the previous proposition which is a contradiction of the assumption.
+
+	When $a>b$, then $ac>bc$ from the previous proposition which is another contradiction of the assumption.
+
+	Thus, the only possible case is $a = b$
+\end{proof}
+\begin{prop}[Euclid's division lemma]
+	Let $n$ be a natural number and let $q$ be a postive number. Then there exists natural numbers $m,r$ such that $0 \leq r \leq q$ and $n= mq + r$
+\end{prop}
+\begin{proof}
+	Inducting over n,
+
+	For $n=0$,
+
+	\begin{align*}
+		0 & = mq+r \\
+	\end{align*}
+
+	When $a,b \in \mathbb{N}$, $a + b = 0$ if and only if $a=b=0$
+	We know that,
+	\begin{align*}
+		m + 0 & = m & \\
+		0 + 0 & = 0
+	\end{align*}
+
+	The converse is easily true, since $a + b = 0$,
+	Thus the base case is true.
+
+	Suppose inductively that there exists $m,r \in \mathbb{N}$ such that $0 \leq r < q$ and $n=mq + r$
+
+	For $n++$,
+
+	We can write,
+
+	\begin{align*}
+		n++ & = (mq + r)++                         \\
+		    & = mq + r++   & \text{Proved earlier} \\
+	\end{align*}
+	Now we have two cases to look at here,
+	We know that $0 \le r < q$ from the inductive hypothesis.
+	But for $r++$, that is not necessarily the case,
+	The range of (r++) becomes $0++ \le r++ < q++$ or $1 \le r++ \le q$ since $a<b$ if and only if $a++ \le b$
+
+	When $1 \le r++ < q$, we have closed the inductive loop but there is one more case to look at.
+
+	When $r++ = q$
+	We have,
+	\begin{align*}
+		n++ & = mq + q \\
+		    & = (m++)q \\
+	\end{align*}
+	Thus we have for this case, $r = 0$, which satisfies the condition $0 \le r < q$
+
+	Closing the inductive loop.
+\end{proof}
+
+\begin{definition}[Exponentiation For Natural Numbers]
+	Let $m$ be a natural number. To raise $m$ to the power $m^0$, we define $m^0 := 1$. Now suppose recursively that $m^n $ has been defined for some natural number $n$ then we define $m^{n++} = m^n \times m$
+\end{definition}
+Thus we can write, $m^0 = 1, m^1 = m^0+m = m, m^2 = m^1 + m = 2m$ and so on
+\begin{prop}
+	Prove,
+	\[
+		(a + b)^2 = a^2 + b^2 + 2ab
+	\]
+\end{prop}
+\begin{proof}
+	Take the RHS,
+	We have,
+	\begin{align*}
+		(a+b)^2 & = (a+b)(a+b)          & \text{From the definition}             \\
+		        & = (a+b)a + (a+b)b     & \text{Distributive Law}                \\
+		        & = aa + ba + ab + bb   &                                        \\
+		        & = a^2 + ba + ab + b^2 & \text{$m^2 = m \times m$}              \\
+		        & = a^2 + ab + ab + b^2 & \text{Commutativity of multiplication} \\
+		        & = a^2 + 2ab + b^2     & \text{Definition of multiplication}    \\
+		        & = a^2 +  b^2 + 2ab    & \text{Commutativity}
+	\end{align*}
+
+	Thus we have LHS = RHS
+\end{proof}
+
+
+\chapter{Set Theory}
+
+We define first what a set is:
+
+\begin{definition}[Sets]
+	We define set A to be any unordered collection of objects. If $x$ is an object, we say that x is an element of A or $x \in A$ if x lies in the collection. Otherwise $x \in A$
+\end{definition}
+
+We start with some axioms:
+\begin{enumerate}
+	\item (Sets are objects) If $A$ is a set, then $A$ is also an object.
+	      A side track about ``Pure Set Theory'' - This theory states that everything in the mathematical universe is a set. We can write 0 as {} or an empty set, 1 can be written as {0} and 2 as {0,1} and so on. Terence Tao argues that they are the `cardinalities of the set.'
+	\item (Equality of sets) Two sets A and B are equal, A = B, iff every element of A is an element of B. A = B, if and only if every element of $x$ of A also belongs to B, and every element $y$ of B belongs to A.
+	\item (Empty set) There exists a set $\emptyset$ known as the empty set, which contains no elements. $x \notin \emptyset$
+	      \begin{prop}[Partial Order]
+		      If $A \subseteq B, B \subseteq C \Rightarrow A \subseteq C$
+	      \end{prop}
+	      \begin{proof}
+		      If $x \in A$, then $x \in B$,
+		      If $x \in B$, then $x \in C$,
+		      Then $x \in A$, then $x \in C$
+
+		      Thus, $A \subseteq C$
+	      \end{proof}
+	      \begin{lemma}[Single choice]
+		      Let $A$ be a non-empty set. Then there exists an object $x$ such that $x \in A$
+	      \end{lemma}
+	      \begin{proof}
+		      Proving by contradiction,
+		      Suppose there is no object $x$ that belongs to A. For all $x$, we have $x \notin A$. We know from Axiom 3, that $x \notin \emptyset$
+
+		      For the statement,
+		      $$ x \in A \Leftrightarrow x \in \emptyset $$
+
+		      Is false both ways, which gives us the result true, which is a contradiction.
+
+		      Thus we also prove that $\emptyset$ is unique.
+	      \end{proof}
+	\item (Pairwise Union) $A \cup B = \{x : x \in A \text{or} x \in B\}$
+	      \begin{lemma}
+		      $A \cup (B \cup C) = (A \cup B) \cup C$
+	      \end{lemma}
+	      \begin{proof}
+		      Taking the left hand side,
+		      We have $x \in A$ or $x \in (B \cup C)$. If we look to the right hand side, we have $x \in (A \cup B)$ or $ x \in C$
+		      If we break the statement down further.
+		      We have $x \in A$ or $x \in B$ or $x \in C$, and  on the right $x \in A$ or $x \in B$ or $x\in C$
+
+		      The two statements are equivalent.
+	      \end{proof}
+	\item (Axiom Of Specification) A, $x \in A$, let P(x) be a property pertaining to $x$. Then there exists a set called $\{x \in A, P(x) \text{is true}\}$ whose elements are precisely the elements $x$ in A for which $P(x)$ is true.
+	\item (Replacement) Let A be a set, for any object $x \in A$, and any object $y$, suppose we have a statement $P(x,y)$ pertaining to $x$ and $y$, such that for each $x \in A$ there is at most one $y$ for which $P(x,y)$ is true. Then there exists a set $\{y : P(x,y)$ is true for some $x \in A\}$
+	\item (Infinity) There exists a set $\mathbb{N}$, whose elements are called natural numbers, as well as an object $0$ in $\mathbb{N}$, and an object $n++$ assigned to every natural number $n \in \mathbb{N}$ such that the Peano axioms hold.
+
+	\item \textbf{Russel's Paradox} (Axiom Of Universal Specification) Suppose for every $x$ we have a property $P(x)$ pertaining to $x$, Then there exists a set $\{x : P(x)$ is true$\}$ such that for every object $y$:
+
+	      $$ y \in \{ x : P(x) \text{is true} \} \Leftrightarrow P(y) \text{is true.}$$
+
+	      This is quite a handy axiom, we can even find all the axioms through this axiom, but there's an issue.
+
+	      Let's say we defined the property $P(x) \Leftrightarrow \text{x is a set, and } x \notin x$
+	      And we defined a set $\Omega$ for which this property is true.
+	      A paradox is created, where we don't know whether $\Omega$ belongs in this set or not, it's simultaneously true and untrue. If $\Omega$ is not in the set, then it is a set that is not in its own set, thereby being contained in the set. If $\Omega$ is in the set, then it's a set that is in itself, therefore it cannot be in the set.
+	      To resolve this paradox we have, the next axiom.
+	      \begin{note}
+		      There is a similar paradox known as the ``Grellig-Nelson paradox'' with the words heterological and autological, the word autological means that the word is an example of itself, for example, the word `word' is a word or `pronounceable' is pronounceable or a `noun' is a noun. The word heterological means that the word is not an example of itself. The word `triangle' is clearly not a $\triangle$ and so on. The question arises, is heterological autological or heterological?
+	      \end{note}
+	\item (Axiom Of Regularity) If A is a non-empty set, then there is at least one element $x$ of A which is either not a set or is disjoint from A.
+	      How exactly does this mitigate the issues that come in from Russel's Paradox?
+\end{enumerate}
+\begin{definition}[Intersection Of Sets]
+	$$A \cap B = \{x: x \in A \text{ and } x \in B \}$$
+\end{definition}
+
+When we take out the Axiom Of Universal Specification, we have a set of axioms known as ``Zermelo- Fraenkel Set Theory''
+
+We will discuss another axiom, known as the ``Axiom of choice'' in upcoming sessions, which allows us to talk about unions and intersections of sets that aren't countable.
+\section{Functions}
+
+\begin{definition}[Functions]
+	Let $A,B$ be sets and let $P(x,y)$ be a property pertaining to an object $x \in X$ and an object $y \in Y$ such that for every $x \in X$, there is exactly one $y \in Y$ for which $P(x,y)$ is true. Then we define the function $f:X  \rightarrow Y$ defined by P on the domain X and the codomain to be the object which, given any input $x \in X$, assigns an output $f(x) \in Y$ defined to be the unique object $f(x) \in Y$ for which $P(x, f(x))$ is true. Thus for any $x \in X$ and $y \in Y$
+	\[
+		y = f(x) \Leftrightarrow P(x,y)
+	\]
+\end{definition}
+
+\begin{definition}[One-To-One Functions]
+	A function $f$ is one-to-one(or injective) if different elements map to different elements:
+	\[
+		x \ne x' \implies f(x) \ne f(x')
+	\]
+\end{definition}
+\begin{definition}[Onto functions]
+	A function $f$ is onto if every element in Y comes from applying $f$ to some element in X:
+
+	For every $y \in Y$ there exists $x \in X$ such that $f(x) = y$
+\end{definition}
+These functions are extremely important for modelling the real world. We represent bodies as a set of points. And the way we model the real world is by making these sets have a one-to-one mapping with the Euclidean space.
+\begin{definition}[Bijective function]
+	Functions $f: X \rightarrow Y$ which are both one-one and onto are called bijective.
+\end{definition}
+
+\begin{definition}[Composition Of Functions]
+	Let $f: X \rightarrow Y$ and $g: Y \rightarrow Z$ be two functions such that the codomain fo f is the same set as the domain of $g$. We then define the composition $g o f: X \rightarrow Z$ of the two functions $g$ and $f$ to be the function defined explicitly by the formula
+	\[
+		(g o f)(x) := g(f(x))
+	\]
+
+	If the codomain of $f$ does not match the domain of $g$, we leave the composition $g o f$ undefined.
+\end{definition}
+\end{document}

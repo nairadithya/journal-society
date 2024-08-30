@@ -1,0 +1,5 @@
+/notes/.auctex-auto/
+*.log
+*.synctex.gz
+*.toc
+*.aux
