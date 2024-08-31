@@ -815,7 +815,8 @@ We start with some axioms:
 
 		      Thus we also prove that $\emptyset$ is unique.
 	      \end{proof}
-	\item (Pairwise Union) $A \cup B = \{x : x \in A \text{or} x \in B\}$
+	\item (Single choice) $a$ is an object, $\{a\}$. $y \in \{a\}$, y = a
+	\item (Pairwise Union) $A \cup B = \{x : x \in A \text{ or } x \in B\}$
 	      \begin{lemma}
 		      $A \cup (B \cup C) = (A \cup B) \cup C$
 	      \end{lemma}
@@ -844,8 +845,98 @@ We start with some axioms:
 	      \begin{note}
 		      There is a similar paradox known as the ``Grellig-Nelson paradox'' with the words heterological and autological, the word autological means that the word is an example of itself, for example, the word `word' is a word or `pronounceable' is pronounceable or a `noun' is a noun. The word heterological means that the word is not an example of itself. The word `triangle' is clearly not a $\triangle$ and so on. The question arises, is heterological autological or heterological?
 	      \end{note}
+	      \begin{prop}
+		      The Axiom Of Universal Specification implies the third axiom onwards.
+	      \end{prop}
+	      \begin{proof}
+		      Proving for each axiom:
+		      \begin{enumerate}
+			      \item  For the axiom of null sets,
+
+			            We can construct null sets in many ways.
+			            We can define the set such that:
+			            \[
+				            \{ x : x \ne x \}
+			            \]
+			            A property that is not true for any given object. This allows us to then say that, for $P(y)$ is true, where $y \in \phi$ then that means $y \neq y$ which is not true. The third axiom is true.
+
+			      \item      For the axiom of single choice,
+
+			            We define the property $P(x)$ such that $x = a$,
+
+			            Then for $y \in \{x : P(x) \text{is true}\}$, then $y \in A$
+
+			      \item		      For the axiom of pair sets,
+
+			            We define the property similarly $P(x)$ such that $x = a$ or $x = b$
+
+			            For the axiom of pairwise unions,
+
+			            We take $P(x)$ to be $x \in A$ or $x \in B$
+			            For the axiom of specification,
+
+			            We define a property $Q(x) : x \in A, P(x)$ is true.
+
+			            Then we have,
+			            \[
+				            y \in \{x : x\in A, Q(x) \text{is true}\}
+			            \]
+
+			            This means that when $Q(y)$ is true, $y \in A $ $P(y)$ is true
+			      \item For the axiom of replacement,
+			            We define $Q(y): x \in A, P(x,y) is true$
+
+			            $z \in \{y: Q(y) is true\}\Leftrightarrow Q(z) \text{is true or } P(x,z) \text{is true}$
+			      \item For the axiom of infinity,
+
+			            We take the property $P(x)$
+		      \end{enumerate}
+	      \end{proof}
+
 	\item (Axiom Of Regularity) If A is a non-empty set, then there is at least one element $x$ of A which is either not a set or is disjoint from A.
 	      How exactly does this mitigate the issues that come in from Russel's Paradox?
+	      \begin{prop}
+		      Show that if A is a set then $A \notin A$
+	      \end{prop}
+	      \begin{proof}
+		      We take the set A and form a singleton set, $\{A\}$
+
+		      A, if $x \in \{A\} \Rightarrow x = A$
+
+		      \[
+			      A \cap \{A\} = \phi
+		      \]
+		      \[
+			      \Rightarrow A \notin A
+		      \]
+	      \end{proof}
+	      \begin{prop}
+		      If A and B are two sets then either $A \notin B$ or $B \notin A$
+	      \end{prop}
+	      \begin{proof}
+		      Let's say we have $A,B$ such that $x \in \{A,B\} \Rightarrow x = A$ or $x = B$
+
+		      x = A,
+		      \[
+			      A \cap \{A,B\} = \phi
+		      \]
+		      \[
+			      B \notin A \cup \{A,B\}
+		      \]
+
+
+		      \[
+			      B \in \{A,B\}
+		      \]
+
+		      So if $A \cap \{A,B\} = \phi$
+		      Then we know that,
+		      \[
+			      B \notin A
+		      \]
+		      Because if it were then we'd have$A \cap \{A,B\} = B$
+	      \end{proof}
+
 \end{enumerate}
 \begin{definition}[Intersection Of Sets]
 	$$A \cap B = \{x: x \in A \text{ and } x \in B \}$$
@@ -887,4 +978,5 @@ These functions are extremely important for modelling the real world. We represe
 
 	If the codomain of $f$ does not match the domain of $g$, we leave the composition $g o f$ undefined.
 \end{definition}
+
 \end{document}
