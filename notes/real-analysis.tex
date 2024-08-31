@@ -465,6 +465,29 @@ Putting m = 0, we get \(n+1 = n++\)
 	$$a++ < b$$
 	But never both, which concludes the inductive loop.
 \end{proof}
+
+\section{Special Forms of Induction}
+\begin{prop}[Induction starting from the base case n]
+	Let n be a natural number, and let P(m) be a property pertaining to the natural numbers such that whenever P(m) is true, P(m++) is true. Show that if P(n) is true, then P(m) is true for all m $\ge$ n. (This principle is sometimes referred to as the principle of induction starting from the base case n.)
+\end{prop}
+\begin{proof}
+	We can cast this into a standard inductive proof.
+	Consider a property Q(m) defined as P(n + m). Inducting over m: \\
+	When m = 0,
+	\begin{align*}
+		Q(0)	&=	P(n + 0)	\\
+				&=	P(n)
+	\end{align*}
+	which we have taken to be true.
+
+	Suppose inductively that Q(m) = P(n + m) is true. Then, from the definition of P, we know that P((n + m)++) is true.
+	\begin{align*}
+		P((n + m)++)	&=	P(n + m++)	\\
+						&=	Q(m++)		\\
+	\end{align*}
+	$\implies$ Q(m++) is true.
+\end{proof}
+
 \section{Multiplication}
 \begin{definition}[Multiplication]
 	Let $m$ be a natural number. To multiply zero to $m$, we define $0 \times m := 0$. Now suppose inductively that we have defined how to multiply $n$ to $m$. Then we can multiply $n++$ to $m$ by defining $(n++) \times m := (n \times m) + m$

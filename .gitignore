@@ -3,3 +3,7 @@
 *.synctex.gz
 *.toc
 *.aux
+
+# miktex
+*.fls
+*.fdb_latexmk
