@@ -278,6 +278,7 @@ Putting m = 0, we get \(n+1 = n++\)
 \begin{definition}[Order]
 	Let n and m be natural numbers we say that $n$ is greater than or equal to m, and write $n \geq m$ iff we have $n = m + a$ for some natural number $a$. We say that $n > m$ when $n \geq m$ and $n \neq m$
 \end{definition}
+\break
 \begin{prop}[Basic properties of order for natural numbers]
 	Let $a,b,c$ be natural numbers then
 	\begin{enumerate}
@@ -467,25 +468,56 @@ Putting m = 0, we get \(n+1 = n++\)
 \end{proof}
 
 \section{Special Forms of Induction}
+\begin{prop}[Strong Principle Of Induction]
+	Let $m_0$ be a natural number, and let $P(m)$ be a property pertaining to an arbitrary natural number $m$. Suppose that for each $m \geq m_0$, we have the following implication: if $P(m')$ is true for all natural numbers $m_0 \leq m' < m$, then $P(m)$ is also true.( In particular this means that $P(m_0)$ is true, since in this case the hypothesis is vacuous. ) Then we can conclude that $P(m)$ is true for all natural numbers $m \geq m_0$.
+\end{prop}
+\begin{proof}
+	For a property $Q(n)$, which is the property that $P(m')$ is true for $m_0 \leq m < n$, then $P(n)$ is true\ldots  Then it is true $\forall \ m \geq m_0$
+
+	For $Q(0)$, we can say that the statement is vacuous since the conditions are not satisfied for both when $m_{0} = 0$ and when $m_{0} <0$
+
+	Suppose inductively that $Q(n)$ is true.
+
+
+	Which means that,
+
+	P(m) is true for $m_{0} \leq m \leq n$
+
+	Then for Q(n++),
+
+	We know that the property $P(m)$ is true for $m_{0} \le m \le n$
+	Take the upper limit of the range,
+
+	\[ m_0 \leq n\]
+
+	We can rewrite this as,
+	\[m_0 < n++\]
+	Since $a<b$ if and only if $a++ \leq b$
+
+	So we have the property is true for $m_0 \leq m < n++$, the property is true for $P(n++)$, since that is how we chose $Q(n)$
+
+	Thus $Q(n++)$ is true, closing the inductive loop.
+
+	Since we know that $P(m)$ is true for any $n$ larger than $m$, we can then say that $m \geq m_{0}$
+\end{proof}
 \begin{prop}[Induction starting from the base case n]
-	Let n be a natural number, and let P(m) be a property pertaining to the natural numbers such that whenever P(m) is true, P(m++) is true. Show that if P(n) is true, then P(m) is true for all m $\ge$ n. (This principle is sometimes referred to as the principle of induction starting from the base case n.)
+	Let n be a natural number, and let $P(m)$ be a property pertaining to the natural numbers such that whenever $P(m)$ is true, $P(m++)$ is true. Show that if $P(n)$ is true, then $P(m)$ is true for all $m \ge n$. (This principle is sometimes referred to as the principle of induction starting from the base case $n$.)
 \end{prop}
 \begin{proof}
 	We can cast this into a standard inductive proof.
-	Consider a property Q(m) defined as P(n + m). Inducting over m: \\
-	When m = 0,
+	Consider a property $Q(m)$ defined as $P(n + m)$. Inducting over $m$: \\
+	When $m = 0$,
 	\begin{align*}
-		Q(0)	&=	P(n + 0)	\\
-				&=	P(n)
+		Q(0) & =	P(n + 0) \\
+		     & =	P(n)
 	\end{align*}
 	which we have taken to be true.
-
-	Suppose inductively that Q(m) = P(n + m) is true. Then, from the definition of P, we know that P((n + m)++) is true.
+	Suppose inductively that $Q(m) = P(n + m)$ is true. Then, from the definition of $P(m)$, we know that $P((n + m)++)$ is true.
 	\begin{align*}
-		P((n + m)++)	&=	P(n + m++)	\\
-						&=	Q(m++)		\\
+		P((n + m)++) & =	P(n + m++)                    \\
+		             & =	Q(m++)                        \\
+		             & \implies Q(m++) \text{is true.}
 	\end{align*}
-	$\implies$ Q(m++) is true.
 \end{proof}
 
 \section{Multiplication}
@@ -801,9 +833,8 @@ Thus we can write, $m^0 = 1, m^1 = m^0+m = m, m^2 = m^1 + m = 2m$ and so on
 
 
 \chapter{Set Theory}
-
+\section{Fundamentals}
 We define first what a set is:
-
 \begin{definition}[Sets]
 	We define set A to be any unordered collection of objects. If $x$ is an object, we say that x is an element of A or $x \in A$ if x lies in the collection. Otherwise $x \in A$
 \end{definition}
@@ -838,6 +869,8 @@ We start with some axioms:
 
 		      Thus we also prove that $\emptyset$ is unique.
 	      \end{proof}
+	      \break
+	\item (Singleton sets and pair sets) If $a$ is an object, then there exists a set $\{a\}$ whose only element is $a$, i.e. for every object $y$, we have $y \in \{a\}$ if and only if $y=a$; we refer to $\{a\}$ as the singleton set whose element is $a$. Furthermore if $a$ and $b$ are objects, then there exists a set $\{a,b\}$ if and only if $y=a$ or $y=b$, we refer to this set as the \textit{pair set} formed by $a$ and $b$.
 	\item (Single choice) $a$ is an object, $\{a\}$. $y \in \{a\}$, y = a
 	\item (Pairwise Union) $A \cup B = \{x : x \in A \text{ or } x \in B\}$
 	      \begin{lemma}
@@ -909,10 +942,9 @@ We start with some axioms:
 			      \item For the axiom of replacement,
 			            We define $Q(y): x \in A, P(x,y) is true$
 
-			            $z \in \{y: Q(y) is true\}\Leftrightarrow Q(z) \text{is true or } P(x,z) \text{is true}$
+			            $z \in \{y: Q(y) \text{ is true} \}\Leftrightarrow Q(z) \text{is true or } P(x,z) \text{is true}$
 			      \item For the axiom of infinity,
-
-			            We take the property $P(x)$
+			            We take the property $P(x)$ that $x$ is a natural number.
 		      \end{enumerate}
 	      \end{proof}
 
@@ -965,7 +997,52 @@ We start with some axioms:
 	$$A \cap B = \{x: x \in A \text{ and } x \in B \}$$
 \end{definition}
 
-When we take out the Axiom Of Universal Specification, we have a set of axioms known as ``Zermelo- Fraenkel Set Theory''
+\begin{prop}
+	The axiom of universal specification is equivalent to an axiom postullating the existence of a universal set consisting of all objects(for all objects $x$ we have $x \in \Omega$). Conversely if a universal set exists, then the axiom of universal specification is true
+\end{prop}
+\begin{proof}
+	We can say from the axiom of universal specification,
+
+	\[
+		\Omega = \{ x : x \text{ is an object}\}
+	\]
+
+	Conversely,
+
+	Assuming the universal set exists, we can write
+
+	\[
+		\{x \in \Omega, P(x) \text{ is true }\}
+	\]
+
+	Since every object belongs to the universal set, this gives us the axiom of universal specificiation
+\end{proof}
+
+\begin{prop}
+	Show that the axiom of replacement implies the axiom of specification
+\end{prop}
+\begin{proof}
+	We define the property $P(x,y)$ to be $y=x$ Thus, we get the axiom of specification.
+	Since $y=x$ we are saying something about $P(x)$
+\end{proof}
+\begin{prop}
+	Define a proper subset of a set $A$ to be a subset $B$ of $A$ with $B \neq A$. Let $A$ be a non-empty set. Show that $A$ does not have any non-empty proper subsets if and only if $A$ is of the form $A = \{x\}$ for some object $x$.
+\end{prop}
+\begin{proof}
+
+	Proving the converse statement is relatively straightforward,
+
+	Given that,
+	$A = \{x\}$
+
+	We must prove that there no non-empty proper subsets of $A$.
+
+	A proper subset of $A$ is defined as $A \subseteq B, A \neq B$,
+
+
+\end{proof}
+
+When we take out the Axiom Of Universal Specification, we have a set of axioms known as ``Zermelo- Fraenkel Set Theory''.
 
 We will discuss another axiom, known as the ``Axiom of choice'' in upcoming sessions, which allows us to talk about unions and intersections of sets that aren't countable.
 \section{Functions}
