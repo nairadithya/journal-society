@@ -25,9 +25,27 @@
 
 \maketitle
 \tableofcontents
+\break
+
+\chapter{An Introduction}
+\section{The Journal Society}
+The Journal Society is a group of people coming together on a regular basis to discuss scientific and mathematical ideas in a rigorous manner. The document you are reading currently is a loose transcription of those discussions as well as the efforts undertaken by those members to solve the problems posed by those discussions.
+
+\section{Real Analysis}
+The notes on Real Analysis is taken from discussions around the textbook \textit{Analysis I} by \textit{Terence Tao}. We intend to continue the discussions until the section on Real Numbers, as it forms a common foundation of knowledge and provides a systematic approach to discussing the other topics that the discussions might move towards.
+
+\section{Motivation}
+The sessions will soon branch out into other fields of inquiry, including but not limited to astrophysics, harmonic analysis, theoretical computer science and artificial intelligence. The larger goal of this society is to instill a sense of mathematical and scientific inquiry in its members as well as setting a good example for our peers and people who are interested in such forms of inquiry.
+
+\section{Contact Us}
+The problems for most of the sessions have been left open to encourage finding
+the solutions, if you are stuck with any of the problems, email me at
+bl.en.u4aid23002@bl.students.amrita.edu or Vennela at
+bl.en.u4aid23053@bl.students.amrita.edu
+
+You can find the updated notes at the GitHub repo linked below
 
 \part{Real Analysis}
-
 \chapter{Natural Numbers}
 Numbers were built to count. A system for counting was made, and that system is the number system.
 \begin{definition}
@@ -1035,12 +1053,56 @@ We start with some axioms:
 	Given that,
 	$A = \{x\}$
 
-	We must prove that there no non-empty proper subsets of $A$.
+	We must prove that there are no non-empty proper subsets of $A$.
 
 	A proper subset of $A$ is defined as $A \subseteq B, A \neq B$,
 
+	Suppose there is a non-empty proper subset $B$ of $A$
 
+	\begin{align*}
+		y \in B & \Rightarrow y \in A = \{x\} \\
+		        & \Rightarrow y = x
+	\end{align*}
+
+	Which would mean,
+
+	\begin{align*}
+		B & = A \text{ or } \\
+		B & = \phi          \\
+	\end{align*}
+	Which is a contradiction.
+
+	For the statement,
+	If A does not have any non-empty proper subsets, then A is of the form $A = \{x\}$,
+
+	Proving by contradiction,
+
+	Suppose that A does not have any non-empty proper subsets and A is not singleton.
+
+	This means that the only proper subset of $A$ has to be $\phi$.
+
+	But we know from Axiom 4, that all sets are built off of singleton sets, which would be a non-empty proper subset of that set $A$.
+
+	Thus the statement is true, proven by contradiction
 \end{proof}
+\begin{prop}
+	Suppose that $A$,$B$, $A'$, $B'$ are sets such that $A\prime \subseteq A$ and $B' \subseteq B$. Show that $A' \cup B \subseteq A \cup B$ and $A' \cap B \subseteq A \cap B$
+\end{prop}
+\begin{proof}
+	\begin{enumerate}
+		\item\label{item:1} $A' \cup B \subseteq A \cup B$ \\
+
+		This means $x \in A' or x \in  B$
+
+		We already know that $A' \subseteq A$ or if $x \in A'$, then $x \in A$. This means, we can say
+		\begin{align*}
+			A' \cup B \subseteq A \cup B & =	x \in A or x \in B \\
+			A' \cup B \subseteq A \cup B & = A \cup B           \\
+		\end{align*}
+
+	\end{enumerate}
+\end{proof}
+
 
 When we take out the Axiom Of Universal Specification, we have a set of axioms known as ``Zermelo- Fraenkel Set Theory''.
 
@@ -1048,20 +1110,20 @@ We will discuss another axiom, known as the ``Axiom of choice'' in upcoming sess
 \section{Functions}
 
 \begin{definition}[Functions]
-	Let $A,B$ be sets and let $P(x,y)$ be a property pertaining to an object $x \in X$ and an object $y \in Y$ such that for every $x \in X$, there is exactly one $y \in Y$ for which $P(x,y)$ is true. Then we define the function $f:X  \rightarrow Y$ defined by P on the domain X and the codomain to be the object which, given any input $x \in X$, assigns an output $f(x) \in Y$ defined to be the unique object $f(x) \in Y$ for which $P(x, f(x))$ is true. Thus for any $x \in X$ and $y \in Y$
+	Let $A,B$ be sets and let $P(x,y)$ be a property pertaining to an object $x \in X$ and an object $y \in Y$ such that for every $x \in X$, there is exactly one $y \in Y$ for which $P(x,y)$ is true. Then we define the function $f:X  \rightarrow Y$ defined by P on the domain $X$ and the codomain to be the object which, given any input $x \in X$, assigns an output $f(x) \in Y$ defined to be the unique object $f(x) \in Y$ for which $P(x, f(x))$ is true. Thus for any $x \in X$ and $y \in Y$
 	\[
 		y = f(x) \Leftrightarrow P(x,y)
 	\]
 \end{definition}
 
 \begin{definition}[One-To-One Functions]
-	A function $f$ is one-to-one(or injective) if different elements map to different elements:
+	A function $f$ is one-to-one (or injective) if different elements map to different elements:
 	\[
 		x \ne x' \implies f(x) \ne f(x')
 	\]
 \end{definition}
 \begin{definition}[Onto functions]
-	A function $f$ is onto if every element in Y comes from applying $f$ to some element in X:
+	A function $f$ is onto if every element in $Y$ comes from applying $f$ to some element in $X$:
 
 	For every $y \in Y$ there exists $x \in X$ such that $f(x) = y$
 \end{definition}
@@ -1069,7 +1131,6 @@ These functions are extremely important for modelling the real world. We represe
 \begin{definition}[Bijective function]
 	Functions $f: X \rightarrow Y$ which are both one-one and onto are called bijective.
 \end{definition}
-
 \begin{definition}[Composition Of Functions]
 	Let $f: X \rightarrow Y$ and $g: Y \rightarrow Z$ be two functions such that the codomain fo f is the same set as the domain of $g$. We then define the composition $g o f: X \rightarrow Z$ of the two functions $g$ and $f$ to be the function defined explicitly by the formula
 	\[
@@ -1078,5 +1139,12 @@ These functions are extremely important for modelling the real world. We represe
 
 	If the codomain of $f$ does not match the domain of $g$, we leave the composition $g o f$ undefined.
 \end{definition}
+\begin{prop}
+	Let $f: X \rightarrow Y$ be a bijective function and let $f^{-1}: Y \rightarrow X$ be its inverse. Verify the cancellation laws $f^{-1}(f(x)) = x$ for all $x \in X$ and $f(f^{-1}(y))= y$ for all $y \in Y$ Conclude that $f^{-1}$ is also invertible and has $f$ as its inverse thus $(f^{-1})^{-1} = f$
+\end{prop}
+\begin{proof}
+\end{proof}
+
+
 
 \end{document}
