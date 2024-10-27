@@ -68,6 +68,7 @@ We start with axioms to help clarify this.
 
 We then make an assumption: That the set \(\mathbb{N}\) which satisfies these five axioms is called the set of natural numbers.
 With these 5 axioms, we can construct sequences
+
 \section{Recursive Definitions}
 
 \begin{prop}[Recursive Definitions]
@@ -1090,7 +1091,7 @@ We start with some axioms:
 \end{prop}
 \begin{proof}
 	\begin{enumerate}
-		\item\label{item:1} $A' \cup B \subseteq A \cup B$ \\
+		\item $A' \cup B \subseteq A \cup B$ \\
 
 		This means $x \in A' or x \in  B$
 
@@ -1122,6 +1123,7 @@ We will discuss another axiom, known as the ``Axiom of choice'' in upcoming sess
 		x \ne x' \implies f(x) \ne f(x')
 	\]
 \end{definition}
+
 \begin{definition}[Onto functions]
 	A function $f$ is onto if every element in $Y$ comes from applying $f$ to some element in $X$:
 
@@ -1139,12 +1141,39 @@ These functions are extremely important for modelling the real world. We represe
 
 	If the codomain of $f$ does not match the domain of $g$, we leave the composition $g o f$ undefined.
 \end{definition}
+\begin{definition}[Equality Of Two Functions]
+	Two functions are said to be equal when the functions have the same domain, codomain and the functions have the same output for all $x \in \text{Domain}$
+\end{definition}
 \begin{prop}
-	Let $f: X \rightarrow Y$ be a bijective function and let $f^{-1}: Y \rightarrow X$ be its inverse. Verify the cancellation laws $f^{-1}(f(x)) = x$ for all $x \in X$ and $f(f^{-1}(y))= y$ for all $y \in Y$ Conclude that $f^{-1}$ is also invertible and has $f$ as its inverse thus $(f^{-1})^{-1} = f$
+	Let $f: X \rightarrow Y$ be a bijective function and let $f^{-1}: Y \rightarrow X$ be its inverse. Verify the cancellation laws $f^{-1}(f(x)) = x$ for all $x \in X$ and $f(f^{-1}(y))= y$ for all $y \in Y$ Conclude that $f^{-1}$ is also invertible and has $f$ as its inverse thus ${(f^{-1})}^{-1} = f$
 \end{prop}
-\begin{proof}
-\end{proof}
+\begin{definition}[Images]
+	If $f X \rightarrow Y$ is a function from $X$ to $Y$, and S is a subset of $X$, we define $f(S)$ to be the set
+	$$f(S) := \{f(x): x \in S\};$$
+\end{definition}
+\begin{definition}[Inverse images]
+	If U Is a subset of $Y$, we define the set $f^{-1}(U)$ to be the set,
 
+	\[f^{-1}(U) := \{x \in X: f(x) \in U\}to be \]
+\end{definition}
+
+This leads to the introduction of a new Axiom.
+
+The Power set Axiom.
+
+There exists a set $Y^X$ such that all the functions $f$ that map from $X$ to $Y$ are contained within it.
+
+\begin{definition}[Union]
+	Let A be a set, all of whose elements are themselves sets, then there exists a set $UA$ whose elements are precisely those objects which are elements of the elements of A, thos for objects $x$
+
+	$$x \in \bigcup A \Leftrightarrow (x \in S \text{ for some } S \in A)$$
+\end{definition}
+
+Similarly, intersections can be described as,
+
+\begin{definition}[Intersections]
+	$$x \in \bigcap A \Leftrightarrow (x \in S \text{ for all } S \in A)$$
+\end{definition}
 
 
 \end{document}
