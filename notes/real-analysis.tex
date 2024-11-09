@@ -106,7 +106,7 @@ With these 5 axioms, we can construct sequences
 \begin{lemma}
 	For any natural numbers $n$ and $m$,
 	$$n + (m++) = (n+m)++$$
-	\label{sec:addition,lemmaadd}
+	\label{sec:additionlemmaadd}
 \end{lemma}
 \begin{proof}
 	Inducting on $n$ while keeping $m$ fixed,
@@ -458,7 +458,7 @@ Putting m = 0, we get \(n+1 = n++\)
 		a     & > b                                                                  \\
 		a     & = b + d                                                              \\
 		(a++) & = (b + d)++ & \text{Incrementing both sides}                         \\
-		(a++) & = b + d++   & \text{From Lemma \ref{sec:addition,lemmaadd}}          \\
+		(a++) & = b + d++   & \text{From Lemma \ref{sec:additionlemmaadd}}          \\
 		(a++) & > b         & \text{If $d \in \mathbb{N}$ then $d++ \in \mathbb{N}$}
 	\end{align*}
 	For $a=b$
@@ -1013,11 +1013,11 @@ We start with some axioms:
 
 \end{enumerate}
 \begin{definition}[Intersection Of Sets]
-	$$A \cap B = \{x: x \in A \text{ and } x \in B \}$$
+	\[A \cap B = \{x: x \in A \text{ and } x \in B \}\]
 \end{definition}
 
 \begin{prop}
-	The axiom of universal specification is equivalent to an axiom postullating the existence of a universal set consisting of all objects(for all objects $x$ we have $x \in \Omega$). Conversely if a universal set exists, then the axiom of universal specification is true
+	The axiom of universal specification is equivalent to an axiom postullating the existence of a universal set consisting of all objects (for all objects $x$ we have $x \in \Omega$). Conversely if a universal set exists, then the axiom of universal specification is true
 \end{prop}
 \begin{proof}
 	We can say from the axiom of universal specification,

@@ -1,0 +1,16 @@
+#+title: Karpathy Notes
+#+author: Adithya Nair
+
+* Introduction
+These are notes taken from [[https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ][Karpathy's lectures on building neural networks]].
+
+* Building Neural Networks And Backpropagation - Building Micrograd
+** Backpropagation
+An algorithm that efficiently evaluates the gradient of a loss function with respect to the weights of a neural networks. We can then tune the weights of the neural network to minimize this loss function.
+** Derivative
+To refresh, a derivative is nothing but the change in $y$ with respect to $x$. If y = $f(x)$,
+
+We have,
+
+
+$$\lim_{h\rightarrow 0}\frac{f(a+h) - f(a)}{h}$$
