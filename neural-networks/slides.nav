@@ -37,8 +37,10 @@
 \headcommand {\sectionentry {3}{A Small Introduction To Partial Derivatives}{21}{A Small Introduction To Partial Derivatives}{0}}
 \headcommand {\slideentry {3}{0}{1}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\beamer@partpages {1}{21}}
-\headcommand {\beamer@subsectionpages {21}{21}}
-\headcommand {\beamer@sectionpages {21}{21}}
-\headcommand {\beamer@documentpages {21}}
-\headcommand {\gdef \inserttotalframenumber {15}}
+\headcommand {\slideentry {3}{0}{2}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@partpages {1}{22}}
+\headcommand {\beamer@subsectionpages {21}{22}}
+\headcommand {\beamer@sectionpages {21}{22}}
+\headcommand {\beamer@documentpages {22}}
+\headcommand {\gdef \inserttotalframenumber {16}}
